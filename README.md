@@ -1,0 +1,2 @@
+# odoo
+scripts para odoo
