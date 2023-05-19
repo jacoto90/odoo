@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <record id="view_purchase_order_form_inherited" model="ir.ui.view"><!-- nombre de la vista : patata i el modelo de odoo por defecto-->
+    <field name="name">purchase.order.form.inherited</field> <!--el nombre de la vista que se va a crear -->
+    <field name="model">purchase.order</field><!--especifica el modelo de datos que se utiliza para cargar los registros que se mostrarán en la vista. En este caso, el modelo es purchase.order, que se refiere a los pedidos de compra en Odoo.La vista que estamos creando se utilizará para mostrar los detalles de los pedidos de compra, y la información de esos pedidos se extraerá del modelo de datos purchase.order.-->
+    <field name="inherit_id" ref="purchase.purchase_order_form"/><!-- la vista original, pero se pueden realizar cambios en la nueva vista que se están creando.-->
+    <field name="arch" type="xml"><!---->
+        <xpath expr="//field[@name='partner_id']" position="attributes"><!--Aquí se selecciona el campo de la vista original que se va a modificar. En este caso, se selecciona el campo partner_id utilizando una expresión XPath.-->
+            <attribute name="domain">[('is_company','=',True)]</attribute><!--Aquí se agrega un nuevo atributo al campo partner_id. El atributo domain se utiliza para filtrar los registros que se mostrarán en el campo, y en este caso se está filtrando para mostrar solo los registros que tienen is_company=True.-->
+        </xpath>
+    </field>
+  </record>
+</odoo>
